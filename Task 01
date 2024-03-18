@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Navigation Menu</title>
+<style>
+ body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(books-5937823_1920.jpg);/* Replace 'background-image.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+  }
+  .showcase{
+    background-image: url(book-composition-with-open-book.jpg);
+    opacity: 0.5;
+    width: auto;
+    height: auto;
+    background-position: center;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color:#222;
+    padding: 10px 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    text-align: right;
+  }
+
+  nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 25px;
+    transition: color 0.3s ease;
+  }
+
+  .highlighted {
+    color: #ff9900;
+  }
+
+  .highlighted:hover {
+    color: #fff;
+  }
+
+  .scrolled {
+    background-color: #222;
+  }
+
+  .content {
+    margin-top: 50px; /* Adjust according to the height of the navigation bar */
+    color: #000000;
+    text-align: center;
+    padding: 20px;
+  }
+  .content p{
+    font-weight: bold;
+    color: black;
+  }
+
+  .help {
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+  }
+
+  .help h1 {
+    color: #000;
+    font-weight: bold;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    nav ul li {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+</style>
+</head>
+<body>
+ 
+    <header>
+<nav id="navbar">
+<ul>
+    <li><a href="#home" class="highlighted">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+</header>
+<div id="home" class="content">
+  <h1>Welcome to our Book Store</h1>
+  <p>Excepteur sint occaecat cupidatat non proident,<br>
+     sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+      Ut enim ad minim veniam, quis nostrud exercitation<br>
+       ullamco laboris nisi ut aliquip ex ea commodo consequat. <br>
+       Duis aute irure dolor in reprehenderit in <br>
+       voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br>
+    Excepteur sint occaecat cupidatat non proident,<br>
+     sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p><a href="#about">Go to About</a></p>
+</div>
+
+<div id="about" class="content">
+  <h1>About Us</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br> 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+     Ut enim ad minim veniam, quis nostrud exercitation <br>
+     ullamco laboris nisi ut aliquip ex ea commodo consequat. <br>
+    Duis aute irure dolor in reprehenderit in voluptate <br>
+    velit esse cillum dolore eu fugiat nulla pariatur. </p>
+  <p><a href="#services">Go to Services</a></p>
+</div>
+
+<div id="services" class="content">
+  <h1>Our Services</h1>
+  <p>Duis aute irure dolor in reprehenderit in voluptate<br> 
+    velit esse cillum dolore eu fugiat nulla pariatur.<br> 
+    Excepteur sint occaecat cupidatat non proident, <br>
+    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p><a href="#contact">Go to Contact</a></p>
+</div>
+
+<div id="contact" class="help">
+  <h1>Contact Us</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br> 
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+     Ut enim ad minim veniam, quis nostrud exercitation ullamco<br>
+    laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<script>
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    var navbar = document.getElementById("navbar");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  }
+  
+  var menuItems = document.querySelectorAll('nav ul li a');
+  menuItems.forEach(function(item) {
+    item.addEventListener('mouseover', function() {
+      menuItems.forEach(function(link) {
+        link.classList.remove('highlighted');
+      });
+      this.classList.add('highlighted');
+    });
+  });
+</script>
+</body>
+</html>
